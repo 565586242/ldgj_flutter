@@ -67,7 +67,7 @@ class _NewDynamicPageState extends State<NewDynamicPage> {
                   ),
                   SizedBox(width: 5),
                   Image.asset(
-                    "lib/assets/icon_xiayiye03@2x.png",
+                    "assets/icon_xiayiye03@2x.png",
                     width: 5.8,
                     height: 9.8,
                   )

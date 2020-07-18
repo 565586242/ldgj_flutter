@@ -61,7 +61,7 @@ class _MyAlPayPageState extends State<MyAlPayPage> {
         borderRadius: BorderRadius.circular(5.0),
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage("lib/assets/img_yinhangkabg@2x.png")
+          image: AssetImage("assets/img_yinhangkabg@2x.png")
         )
       ),
       child: Row(
@@ -70,7 +70,7 @@ class _MyAlPayPageState extends State<MyAlPayPage> {
             width: 45,
             height: 45,
             margin: EdgeInsets.only(right: 10),
-            child: Image.asset("lib/assets/icon_zhifubao@2x.png",fit: BoxFit.cover,),
+            child: Image.asset("assets/icon_zhifubao@2x.png",fit: BoxFit.cover,),
           ),
           Expanded(
             child: Column(

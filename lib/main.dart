@@ -10,7 +10,7 @@ void main() => runApp(MyApp(
 
 class MyApp extends StatelessWidget {
   final CommonModel model;
-
+ 
   const MyApp({Key key,@required this.model}) : super(key: key);
 
   @override
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       child: ScopedModel(
         model: model, 
         child: MaterialApp(
-          title: "丽东国际",
+          title: "汉威资本",
           navigatorObservers: [BotToastNavigatorObserver()],
           home: LoginPwdPage(),
         )

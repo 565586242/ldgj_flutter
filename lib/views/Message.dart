@@ -103,7 +103,7 @@ class _MesagePageState extends State<MesagePage> {
                 Container(
                   margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
                   child: Image.asset(
-                    "lib/assets/icon_xiayiye03@2x.png",
+                    "assets/icon_xiayiye03@2x.png",
                     width: 6,
                   ),
                 )

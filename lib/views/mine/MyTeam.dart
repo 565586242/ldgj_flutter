@@ -71,7 +71,7 @@ class _MyTeamPageState extends State<MyTeamPage> {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage("lib/assets/img_my_xinxi@2x.png")
+                  image: AssetImage("assets/img_my_xinxi@2x.png")
                 )
               ),
             ),
@@ -117,7 +117,7 @@ class _MyTeamPageState extends State<MyTeamPage> {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage("lib/assets/img_duiyuan@2x.png")
+                  image: AssetImage("assets/img_duiyuan@2x.png")
                 ),
                 borderRadius: BorderRadius.circular(5)
               ),
@@ -130,7 +130,7 @@ class _MyTeamPageState extends State<MyTeamPage> {
                       children: <Widget>[
                           ClipOval(
                             child: user["user_head"] == null || user["user_head"] == ""?
-                              Image.asset("lib/assets/img_touxiang@2x.png",width: 60,fit: BoxFit.cover,):
+                              Image.asset("assets/img_touxiang@2x.png",width: 60,fit: BoxFit.cover,):
                               Image.network(CommonModel().hostUrl + user["user_head"],width: 60,fit: BoxFit.cover,),
                           ),
                         SizedBox(width: 5,),

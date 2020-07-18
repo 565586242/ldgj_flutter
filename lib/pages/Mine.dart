@@ -23,8 +23,8 @@ class _MinePageState extends State<MinePage> {
 
   @override
   void initState() {  
-    super.initState();
     myInfo();
+    super.initState();
   }
 
   myInfo() async {
@@ -46,7 +46,7 @@ class _MinePageState extends State<MinePage> {
         image: DecorationImage(
           fit: BoxFit.cover,
           image: AssetImage(
-            "lib/assets/img_my_xinxi@2x.png",
+            "assets/img_my_xinxi@2x.png",
           )
         )
       ),
@@ -80,7 +80,7 @@ class _MinePageState extends State<MinePage> {
                             CommonModel().hostUrl + userInfo["user_head"]
                           ):
                           AssetImage(
-                            "lib/assets/img_touxiang@2x.png"
+                            "assets/img_touxiang@2x.png"
                           )
                       ),
                     ),
@@ -103,7 +103,7 @@ class _MinePageState extends State<MinePage> {
                             padding: EdgeInsets.only(left: 28),
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: AssetImage("lib/assets/icon_huiyuan@2x.png")
+                                image: AssetImage("assets/icon_huiyuan@2x.png")
                               )
                             ),
                             child: Text(
@@ -296,7 +296,7 @@ class _MinePageState extends State<MinePage> {
                       child: Container(
                         width: 100,
                         height: 28,
-                        child: Image.asset("lib/assets/my_icon_jiangli@2x.png",fit: BoxFit.contain),
+                        child: Image.asset("assets/my_icon_jiangli@2x.png",fit: BoxFit.contain),
                       )
                     ),
                     GestureDetector(
@@ -306,7 +306,7 @@ class _MinePageState extends State<MinePage> {
                       child: Container(
                         width: 100,
                         height: 60,
-                        child: Image.asset("lib/assets/my_icon_mingxi@2x.png",fit: BoxFit.contain),
+                        child: Image.asset("assets/my_icon_mingxi@2x.png",fit: BoxFit.contain),
                       )
                     ),
                     GestureDetector(
@@ -316,7 +316,7 @@ class _MinePageState extends State<MinePage> {
                       child: Container(
                         width: 100,
                         height: 60,
-                        child: Image.asset("lib/assets/my_icon_fenxiang@2x.png",fit: BoxFit.contain),
+                        child: Image.asset("assets/my_icon_fenxiang@2x.png",fit: BoxFit.contain),
                       )
                     ),
                   ],
@@ -371,7 +371,7 @@ class _MinePageState extends State<MinePage> {
                                 width: 34,
                                 height: 27,
                                 margin: EdgeInsets.only(right: 9.5),
-                                child: Image.asset("lib/assets/my_icon_tuandui@2x.png",fit: BoxFit.cover,),
+                                child: Image.asset("assets/my_icon_tuandui@2x.png",fit: BoxFit.cover,),
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -403,7 +403,7 @@ class _MinePageState extends State<MinePage> {
                               width: 34,
                               height: 27,
                               margin: EdgeInsets.only(right: 9.5),
-                              child: Image.asset("lib/assets/my_icon_yejimingxi@2x.png",fit: BoxFit.cover,),
+                              child: Image.asset("assets/my_icon_yejimingxi@2x.png",fit: BoxFit.cover,),
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -431,22 +431,22 @@ class _MinePageState extends State<MinePage> {
 
     var listArr = [
       {
-        "imgUrl": "lib/assets/my_icon_gongzuoshi@2x.png",
+        "imgUrl": "assets/my_icon_gongzuoshi@2x.png",
         "text": "工作室",
         "type": 1
       },
       {
-        "imgUrl": "lib/assets/my_icon_yunyingzhongxin@2x.png",
+        "imgUrl": "assets/my_icon_yunyingzhongxin@2x.png",
         "text": "运营中心",
         "type": 2
       },
       {
-        "imgUrl": "lib/assets/my_icon_fengongsi@2x.png",
+        "imgUrl": "assets/my_icon_fengongsi@2x.png",
         "text": "分公司",
         "type": 3
       },
       {
-        "imgUrl": "lib/assets/my_icon_rongyudongshi@2x.png",
+        "imgUrl": "assets/my_icon_rongyudongshi@2x.png",
         "text": "荣誉董事",
         "type": 4
       },
@@ -532,7 +532,7 @@ class _MinePageState extends State<MinePage> {
     return Container(
       height: 120,
       margin: EdgeInsets.only(left: 13,right: 13),
-      child: Image.asset("lib/assets/img_001@2x.png"),
+      child: Image.asset("assets/img_001@2x.png"),
     );
   }
   @override

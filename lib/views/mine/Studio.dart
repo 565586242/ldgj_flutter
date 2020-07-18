@@ -3,13 +3,19 @@ import 'package:new_ldgj/common/common.dart';
 
 class StudioPage extends StatefulWidget {
   final data;
-  StudioPage({Key key,this.data}) : super(key: key);
+  StudioPage({Key key, this.data}) : super(key: key);
 
   @override
   _StudioPageState createState() => _StudioPageState();
 }
 
 class _StudioPageState extends State<StudioPage> {
+  @override
+  void initState() {
+    print(widget.data);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,13 +27,13 @@ class _StudioPageState extends State<StudioPage> {
           },
         ),
         centerTitle: true,
-        title: Text("${widget.data["userInfo"]["false_level"]}"??""),
+        title: Text("${widget.data["userInfo"]["false_level"]}" ?? ""),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color.fromRGBO(226,48,54, 1),
-                Color.fromRGBO(208,0,8, 1)
+                Color.fromRGBO(226, 48, 54, 1),
+                Color.fromRGBO(208, 0, 8, 1)
               ],
             ),
           ),
@@ -36,7 +42,10 @@ class _StudioPageState extends State<StudioPage> {
       body: ListView(
         children: <Widget>[
           mineTop(),
-          container()
+          personConfig(),
+          performance(),
+          SizedBox(height: 20),
+          container(),
         ],
       ),
     );
@@ -60,37 +69,29 @@ class _StudioPageState extends State<StudioPage> {
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadius.circular(29.5),
                     image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: widget.data["userInfo"]["user_head"] != null && widget.data["userInfo"]["user_head"] != ""?
-                        NetworkImage(
-                          CommonModel().hostUrl + widget.data["userInfo"]["user_head"]
-                        ):
-                        AssetImage(
-                          "lib/assets/img_touxiang@2x.png"
-                        )
-                    ),
+                        fit: BoxFit.cover,
+                        image: widget.data["userInfo"]["user_head"] != null &&
+                                widget.data["userInfo"]["user_head"] != ""
+                            ? NetworkImage(CommonModel().hostUrl +
+                                widget.data["userInfo"]["user_head"])
+                            : AssetImage("assets/img_touxiang@2x.png")),
                   ),
                 ),
                 Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Text(
-                        widget.data["userInfo"]["user_name"],
-                        style: TextStyle(
-                          fontSize: 18
-                        ),
-                      ),
-                      Text(
-                        widget.data["userInfo"]["user_phone"],
-                        style: TextStyle(
-                          fontSize: 18
-                        ),
-                      )
-                    ],
-                  )
-                )
+                    child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Text(
+                      widget.data["userInfo"]["user_name"],
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    Text(
+                      widget.data["userInfo"]["user_phone"],
+                      style: TextStyle(fontSize: 18),
+                    )
+                  ],
+                ))
               ],
             ),
           ),
@@ -98,57 +99,26 @@ class _StudioPageState extends State<StudioPage> {
       ),
     );
   }
-  
-  Widget container(){
+
+  /* 级别介绍 */
+  Widget container() {
     return Container(
       padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
       child: Text("${widget.data["levelIntro"]}"),
     );
   }
-  
-  
-  
+
   /* 人员配置 */
   Widget personConfig() {
-    List<Widget> list = [];
-    for (var item in widget.data["myDirectInfo"]) {
-      list.add(
-        Container(
-          height: 50,
-          child: Row(
-            children: <Widget>[
-              Container(
-                width: 30,
-                height: 30,
-                margin: EdgeInsets.only(right: 10),
-                child: item["user_head"] != null && item["user_head"] != ""?
-                Image.asset(CommonModel().hostUrl + item["user_head"],fit: BoxFit.cover,):
-                Image.asset("lib/assets/img_touxiang@2x.png",fit: BoxFit.cover,),
-              ),
-              Expanded(
-                child: Row(
-                  children: <Widget>[
-                    Expanded(child: Text(item["user_truename"]??"",style: TextStyle(fontSize: 15),),),
-                    Expanded(child: Text(item["user_phone"]??"",style: TextStyle(fontSize: 15)),)
-                  ],
-                )
-              )
-            ],
-          ),
-        )
-      );
-    }
-
     return Container(
       child: Column(
         children: <Widget>[
           pageTitle("人员配置"),
           Container(
+            width: double.infinity,
             color: Colors.white,
-            padding: EdgeInsets.only(left: 13),
-            child: Column(
-              children: list
-            )
+            padding: EdgeInsets.all(13),
+            child: Text("${widget.data["myDirectInfo"]}",)
           )
         ],
       ),
@@ -164,24 +134,36 @@ class _StudioPageState extends State<StudioPage> {
           Container(
             height: 50,
             color: Colors.white,
-            padding: EdgeInsets.only(left: 13,right: 14.5),
+            padding: EdgeInsets.only(left: 13, right: 14.5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("个人业绩",style: TextStyle(fontSize: 15,color: Colors.grey[500]),),
-                Text("${widget.data["myResult"]}",style: TextStyle(fontSize: 15),)
+                Text(
+                  "个人业绩",
+                  style: TextStyle(fontSize: 15, color: Colors.grey[500]),
+                ),
+                Text(
+                  "${widget.data["myResult"]}",
+                  style: TextStyle(fontSize: 15),
+                )
               ],
             ),
           ),
           Container(
             height: 50,
             color: Colors.white,
-            padding: EdgeInsets.only(left: 13,right: 14.5),
+            padding: EdgeInsets.only(left: 13, right: 14.5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("总业绩",style: TextStyle(fontSize: 15,color: Colors.grey[500]),),
-                Text("${widget.data["teamResult"]}",style: TextStyle(fontSize: 15),)
+                Text(
+                  "总业绩",
+                  style: TextStyle(fontSize: 15, color: Colors.grey[500]),
+                ),
+                Text(
+                  "${widget.data["teamResult"]}",
+                  style: TextStyle(fontSize: 15),
+                )
               ],
             ),
           )
@@ -191,26 +173,27 @@ class _StudioPageState extends State<StudioPage> {
   }
 
   /* 分支机构 */
-  Widget branches() {
+  /* Widget branches() {
     List<Widget> list = [];
     for (var item in widget.data["directInfo"]) {
-      list.add(
-        Container(
-          height: 50,
-          color: Colors.white,
-          padding: EdgeInsets.only(left: 13),
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                child: Text("${item["user_name"]}",style: TextStyle(fontSize: 15,color: Colors.grey[500]),),
+      list.add(Container(
+        height: 50,
+        color: Colors.white,
+        padding: EdgeInsets.only(left: 13),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: Text(
+                "${item["user_name"]}",
+                style: TextStyle(fontSize: 15, color: Colors.grey[500]),
               ),
-              Expanded(
-                child: Text("${item["user_level"]}"),
-              )
-            ],
-          ),
-        )
-      );
+            ),
+            Expanded(
+              child: Text("${item["user_level"]}"),
+            )
+          ],
+        ),
+      ));
     }
 
     return Container(
@@ -223,8 +206,9 @@ class _StudioPageState extends State<StudioPage> {
         ],
       ),
     );
-  }
+  } */
 
+  /* 标题 */
   Widget pageTitle(String title) {
     return Container(
       height: 38.5,
@@ -234,7 +218,11 @@ class _StudioPageState extends State<StudioPage> {
         children: <Widget>[
           Row(
             children: <Widget>[
-              Text(title,textAlign: TextAlign.start,style: TextStyle(fontSize: 15),)
+              Text(
+                title,
+                textAlign: TextAlign.start,
+                style: TextStyle(fontSize: 15),
+              )
             ],
           )
         ],

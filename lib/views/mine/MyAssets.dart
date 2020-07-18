@@ -130,7 +130,7 @@ class _MyAssetsPageState extends State<MyAssetsPage>
                     width: 22,
                     margin: EdgeInsets.only(right: 15),
                     child: Image.asset(
-                      "lib/assets/icon_yinhangka@2x.png",
+                      "assets/icon_yinhangka@2x.png",
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -160,7 +160,7 @@ class _MyAssetsPageState extends State<MyAssetsPage>
                     width: 22,
                     margin: EdgeInsets.only(right: 15),
                     child: Image.asset(
-                      "lib/assets/icon_zhifubao@2x.png",
+                      "assets/icon_zhifubao@2x.png",
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -190,7 +190,7 @@ class _MyAssetsPageState extends State<MyAssetsPage>
                     width: 22,
                     margin: EdgeInsets.only(right: 15),
                     child: Image.asset(
-                      "lib/assets/icon_weixin@2x.png",
+                      "assets/icon_weixin@2x.png",
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -254,7 +254,7 @@ class _MyAssetsPageState extends State<MyAssetsPage>
                     borderRadius: BorderRadius.circular(10.0),
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage("lib/assets/img_qianbao@2x.png"))),
+                        image: AssetImage("assets/img_qianbao@2x.png"))),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -350,7 +350,7 @@ class _MyAssetsPageState extends State<MyAssetsPage>
                     borderRadius: BorderRadius.circular(10.0),
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage("lib/assets/img_qianbao@2x.png"))),
+                        image: AssetImage("assets/img_qianbao@2x.png"))),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -444,7 +444,7 @@ class _MyAssetsPageState extends State<MyAssetsPage>
                     borderRadius: BorderRadius.circular(10.0),
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage("lib/assets/img_qianbao@2x.png"))),
+                        image: AssetImage("assets/img_qianbao@2x.png"))),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -517,7 +517,7 @@ class _MyAssetsPageState extends State<MyAssetsPage>
       child: Container(
         alignment: Alignment.bottomCenter,
         child: Image.asset(
-          "lib/assets/img_001@2x.png",
+          "assets/img_001@2x.png",
         ),
       ),
     );

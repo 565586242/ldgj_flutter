@@ -16,12 +16,12 @@ class WithdrawPage extends StatefulWidget {
 }
 
 class _WithdrawPageState extends State<WithdrawPage> {
-
-  var type = 0;
+  var type = 0;  //支付方式
   var amount;   //金额
   var code;  //验证码
   var sendCodeTime = 0;  //验证码时间
   Timer _timer;  //定时器
+  var canPayType = {}; //可以使用的支付方式
   
   startTime() {
     sendCodeTime = 60;
@@ -38,6 +38,22 @@ class _WithdrawPageState extends State<WithdrawPage> {
   }
 
   @override
+  void initState() {
+    ajaxGetWithDraw();
+    super.initState();
+  }
+
+  /* 接口获取可以提现的方式 */
+  ajaxGetWithDraw() async {
+    var res = await AjaxUtil().getHttp(context, '/withDraw');
+    if(res["code"] == 200){
+      setState(() {
+        canPayType = res["data"];
+      });
+    }
+  }
+
+  @override
   void dispose() {
     super.dispose();
     if (_timer != null) {
@@ -46,89 +62,124 @@ class _WithdrawPageState extends State<WithdrawPage> {
   }
 
   Widget _choosePay() {
+
+    Widget getWithDraw() {
+      List<Widget> list = [];
+      if(canPayType["is_wechat"] == 1){
+        setState(() {
+          type = 1;
+        });
+        list.add(
+          Offstage(
+            offstage: canPayType["is_wechat"] != 1,
+            child: Container(
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    type = 1;
+                  });
+                },
+                child: Row(
+                  children: <Widget>[
+                    Radio(
+                      value: 1, 
+                      groupValue: type, 
+                      onChanged: (v){
+                        setState(() {
+                          type = 1;
+                        });
+                      },
+                      activeColor: Color.fromRGBO(206, 0, 10, 1)
+                    ),
+                    Text("微信"),
+                  ],
+                ),
+              )
+            ),
+          )
+        );
+      }
+      if(canPayType["is_alipy"] == 1){
+        setState(() {
+          type = 0;
+        });
+        list.add(
+          Offstage(
+            offstage: canPayType["is_alipy"] != 1,
+            child: Container(
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    type = 0;
+                  });
+                },
+                child: Row(
+                  children: <Widget>[
+                    Radio(
+                      value: 0, 
+                      groupValue: type, 
+                      onChanged: (v){
+                        setState(() {
+                          type = 0;
+                        });
+                      },
+                      activeColor: Color.fromRGBO(206, 0, 10, 1)
+                    ),
+                    Text("支付宝"),
+                  ],
+                ),
+              )
+            ),
+          )
+        );
+      }
+      if(canPayType["is_bank"] == 1){
+        setState(() {
+          type = 2;
+        });
+        list.add(
+          Offstage(
+            offstage: canPayType["is_bank"] != 1,
+            child: Container(
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    type = 2;
+                  });
+                },
+                child: Row(
+                  children: <Widget>[
+                    Radio(
+                      value: 2, 
+                      groupValue: type, 
+                      onChanged: (v){
+                        setState(() {
+                          type = 2;
+                        });
+                      },
+                      activeColor: Color.fromRGBO(206, 0, 10, 1)
+                    ),
+                    Text("银行卡"),
+                  ],
+                ),
+              )
+            ),
+          )
+        );
+      }
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: list
+      );
+    }
+
     return Container(
       padding: EdgeInsets.only(left: 13,top: 36,right: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text("请选择到账方式",style: TextStyle(fontSize: 15)),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Container(
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      type = 0;
-                    });
-                  },
-                  child: Row(
-                    children: <Widget>[
-                      Radio(
-                        value: 0, 
-                        groupValue: type, 
-                        onChanged: (v){
-                          setState(() {
-                            type = 0;
-                          });
-                        },
-                        activeColor: Color.fromRGBO(206, 0, 10, 1)
-                      ),
-                      Text("支付宝"),
-                    ],
-                  ),
-                )
-              ),
-              Container(
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      type = 1;
-                    });
-                  },
-                  child: Row(
-                    children: <Widget>[
-                      Radio(
-                        value: 1, 
-                        groupValue: type, 
-                        onChanged: (v){
-                          setState(() {
-                            type = 1;
-                          });
-                        },
-                        activeColor: Color.fromRGBO(206, 0, 10, 1)
-                      ),
-                      Text("微信"),
-                    ],
-                  ),
-                )
-              ),
-              Container(
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      type = 2;
-                    });
-                  },
-                  child: Row(
-                    children: <Widget>[
-                      Radio(
-                        value: 2, 
-                        groupValue: type, 
-                        onChanged: (v){
-                          setState(() {
-                            type = 2;
-                          });
-                        },
-                        activeColor: Color.fromRGBO(206, 0, 10, 1)
-                      ),
-                      Text("银行卡"),
-                    ],
-                  ),
-                )
-              )
-            ],
-          )
+          getWithDraw()
         ],
       ),
     );

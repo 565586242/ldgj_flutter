@@ -29,8 +29,12 @@ class _CrowCommunityPageState extends State<CrowCommunityPage> {
     "pay_voucher": '',
     "pay_password": ''
   };
-  var base64Img = "";
-  var imgFile;
+  var base64Img1 = "";
+  var base64Img2 = "";
+  var base64Img3 = "";
+  var imgFile1;
+  var imgFile2;
+  var imgFile3;
   @override
   void initState() { 
     crowdfunding();
@@ -277,7 +281,7 @@ class _CrowCommunityPageState extends State<CrowCommunityPage> {
                   });
                 },
                 child: Container(
-                  width: 60,
+                  width: 80,
                   child: Text("财富金"),
                 ),
               ),
@@ -293,7 +297,7 @@ class _CrowCommunityPageState extends State<CrowCommunityPage> {
               )
             ],
           ),
-          Row(
+          walletInfo["reserve_fund"] == null?Container():Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Radio(
@@ -313,7 +317,7 @@ class _CrowCommunityPageState extends State<CrowCommunityPage> {
                   });
                 },
                 child: Container(
-                  width: 60,
+                  width: 80,
                   child: Text("储备金"),
                 ),
               ),
@@ -349,7 +353,7 @@ class _CrowCommunityPageState extends State<CrowCommunityPage> {
                   });
                 },
                 child: Container(
-                  width: 60,
+                  width: 80,
                   child: Text("支付宝"),
                 ),
               ),
@@ -392,7 +396,7 @@ class _CrowCommunityPageState extends State<CrowCommunityPage> {
                   });
                 },
                 child: Container(
-                  width: 60,
+                  width: 80,
                   child: Text("微信"),
                 ),
               ),
@@ -435,7 +439,7 @@ class _CrowCommunityPageState extends State<CrowCommunityPage> {
                   });
                 },
                 child: Container(
-                  width: 60,
+                  width: 80,
                   child: Text("银行卡"),
                 ),
               ),
@@ -454,7 +458,7 @@ class _CrowCommunityPageState extends State<CrowCommunityPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Radio(
-                value: 3, 
+                value: 6, 
                 activeColor: Color.fromRGBO(223, 0, 0, 1),
                 groupValue: formInfo["pay_type"], 
                 onChanged: (value){
@@ -466,23 +470,30 @@ class _CrowCommunityPageState extends State<CrowCommunityPage> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    choosePayType("pay_type",3);
+                    choosePayType("pay_type",6);
                   });
                 },
                 child: Container(
-                  width: 60,
-                  child: Text("数字钱包"),
+                  width: 80,
+                  child: Text("第三方支付"),
                 ),
               ),
-              Expanded(
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => SeeImagePage(
+                    image: CommonModel().hostUrl + dataInfo["third_pay"],
+                    type: "network",
+                  )));
+                },
                 child: Container(
-                  padding: EdgeInsets.only(right: 40),
+                  width: 89,
+                  height: 89,
                   margin: EdgeInsets.only(left: 80),
-                  child: Text(
-                    dataInfo["virtual"]??"",
-                    maxLines: 2,
-                  )
-                ),
+                  child: dataInfo["third_pay"] == null ? null : Image.network(
+                    CommonModel().hostUrl + dataInfo["third_pay"],
+                    fit: BoxFit.cover,
+                  ),
+                )
               )
             ],
           ),
@@ -511,14 +522,38 @@ class _CrowCommunityPageState extends State<CrowCommunityPage> {
             children: <Widget>[
               GestureDetector(
                 onTap: () {
-                  getImage();
+                  getImage(1);
                 },
                 child: Container(
                   width: 120,
                   height: 120,
-                  child: imgFile == null?
-                    Image.asset("lib/assets/img_shangchuan@2x.png",fit: BoxFit.contain,):
-                    Image.file(imgFile,fit: BoxFit.contain,),
+                  child: imgFile1 == null?
+                    Image.asset("assets/img_shangchuan@2x.png",fit: BoxFit.contain,):
+                    Image.file(imgFile1,fit: BoxFit.contain,),
+                ),
+              ),
+              imgFile1 == null?Container():GestureDetector(
+                onTap: () {
+                  getImage(2);
+                },
+                child: Container(
+                  width: 120,
+                  height: 120,
+                  child: imgFile2 == null?
+                    Image.asset("assets/img_shangchuan@2x.png",fit: BoxFit.contain,):
+                    Image.file(imgFile2,fit: BoxFit.contain,),
+                ),
+              ),
+              imgFile2 == null?Container():GestureDetector(
+                onTap: () {
+                  getImage(3);
+                },
+                child: Container(
+                  width: 120,
+                  height: 120,
+                  child: imgFile3 == null?
+                    Image.asset("assets/img_shangchuan@2x.png",fit: BoxFit.contain,):
+                    Image.file(imgFile3,fit: BoxFit.contain,),
                 ),
               )
             ],
@@ -528,13 +563,21 @@ class _CrowCommunityPageState extends State<CrowCommunityPage> {
     );
   }
 
-  getImage() async {
+  getImage(type) async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
     if(image != null){
       var baseImg = await EncodeUtil.imageFile2Base64(image);
       setState(() {
-        imgFile = image;
-        base64Img = "data:image/png;base64," + baseImg;
+        if(type == 1){
+          imgFile1 = image;
+          base64Img1 = "data:image/png;base64," + baseImg;
+        }else if(type == 2){
+          imgFile2 = image;
+          base64Img2 = "data:image/png;base64," + baseImg;
+        }else{
+          imgFile3 = image;
+          base64Img3 = "data:image/png;base64," + baseImg;
+        }
       });
     }
   }
@@ -565,7 +608,9 @@ class _CrowCommunityPageState extends State<CrowCommunityPage> {
           if(formInfo["amount"] == "0"){
             formInfo["amount"] = selfMoney;
           }
-          formInfo["pay_voucher"] = base64Img??"";
+          formInfo["pay_voucher"] = base64Img1??"";
+          formInfo["pay_voucher1"] = base64Img2??"";
+          formInfo["pay_voucher2"] = base64Img3??"";
           if(formInfo["money_type"] == 0 && formInfo["pay_voucher"] == ''){
             Toast.toast(context,msg: "支付凭证未上传");
           }else if(formInfo["money_type"] == 1 && num.parse(walletInfo["fortune_gold"]) < double.parse(formInfo["amount"])){
@@ -580,6 +625,8 @@ class _CrowCommunityPageState extends State<CrowCommunityPage> {
                 "amount": formInfo["amount"],
                 "pay_type": formInfo["pay_type"],
                 "pay_voucher": formInfo["pay_voucher"],
+                "pay_voucher1": formInfo["pay_voucher1"],
+                "pay_voucher2": formInfo["pay_voucher2"],
               };
             }else{
               //财富金/储备金

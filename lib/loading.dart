@@ -13,25 +13,25 @@ class LoadingPage extends StatefulWidget {
 }
 
 class _LoadingPageState extends State<LoadingPage> {
-  int lastTime = 3;
+  int lastTime = 3;  //显示加载图的时间
+  String loadingImage;  //加载图
   Timer _timer;
 
 
   @override
   void initState() {
     startimgage();
-    startTime();
     super.initState();
   }
-
-  String loadingImage;
 
   //获取启动图
   startimgage() async {
     var res = await AjaxUtil().postHttp(context, '/startimgage');
     if(res["code"] == 200) {
       setState(() {
-        loadingImage = CommonModel().hostUrl + res["data"]["start_image"];
+        loadingImage = CommonModel().hostUrl + res["data"]["start_image_info"]["start_img"];
+        lastTime = res["data"]["start_image_info"]["start_img_time"];
+        startTime();
       });
     }
   }
@@ -69,7 +69,7 @@ class _LoadingPageState extends State<LoadingPage> {
             height: double.infinity,
             child: loadingImage == null?
               Image.asset(
-                "lib/assets/loading.jpg",
+                "assets/loading.jpg",
                 fit: BoxFit.cover,
               ): 
               Image.network(

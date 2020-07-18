@@ -70,7 +70,7 @@ class _FindPageState extends State<FindPage> {
                     width: 5.8,
                     height: 9.8,
                     child: Image.asset(
-                      "lib/assets/icon_xiayiye03@2x.png",
+                      "assets/icon_xiayiye03@2x.png",
                       fit: BoxFit.cover,
                     ),
                   )
@@ -123,19 +123,19 @@ class _FindPageState extends State<FindPage> {
       {
         "title": '众筹社区',
         "imgHeight": 120,
-        "imgUrl": "lib/assets/img_zhongchou@2x.png",
+        "imgUrl": "assets/img_zhongchou@2x.png",
         "routerUrl": CrowCommunityPage()
       },
       {
         "title": '招商合作',
         "imgHeight": 75,
-        "imgUrl": "lib/assets/img_zaoshang@2x.png",
+        "imgUrl": "assets/img_zaoshang@2x.png",
         "routerUrl": CooperationPage()
       },
       {
         "title": '数字社区',
         "imgHeight": 75,
-        "imgUrl": "lib/assets/img_shangxueyuan@2x.png"
+        "imgUrl": "assets/img_shangxueyuan@2x.png"
       },
     ];
 

@@ -58,7 +58,7 @@ class _HelpPageState extends State<HelpPage> {
         child: ListView(
           children: <Widget>[
             Image.asset(
-              "lib/assets/login_logo@2x.png",
+              "assets/login_logo@2x.png",
               height: 87,
             ),
             Container(
@@ -158,7 +158,7 @@ class _HelpPageState extends State<HelpPage> {
             Container(
               margin: EdgeInsets.all(13),
               child: Image.asset(
-                "lib/assets/img_001@2x.png",
+                "assets/img_001@2x.png",
                 fit: BoxFit.cover,
               )
             )

@@ -89,7 +89,7 @@ class _LoginPwdPageState extends State<LoginPwdPage> {
     return Container(
       alignment: Alignment.topCenter,
       child: Image.asset(
-        "lib/assets/login_logo@2x.png",
+        "assets/login_logo@2x.png",
         width: 100,
         fit: BoxFit.cover,
       ),
@@ -145,7 +145,7 @@ class _LoginPwdPageState extends State<LoginPwdPage> {
                             _isShowPwd = !_isShowPwd;
                           });
                         },
-                        child: Image.asset(_isShowPwd?"lib/assets/login_icon_xianshi@2x.png":"lib/assets/login_icon_yincang@2x.png"),
+                        child: Image.asset(_isShowPwd?"assets/login_icon_xianshi@2x.png":"assets/login_icon_yincang@2x.png"),
                       )),
                       Container(
                         width: 0.5,

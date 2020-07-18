@@ -67,7 +67,7 @@ class _LoginCodePageState extends State<LoginCodePage> {
     return Container(
       alignment: Alignment.topCenter,
       child: Image.asset(
-        "lib/assets/login_logo@2x.png",
+        "assets/login_logo@2x.png",
         width: 100,
         fit: BoxFit.cover,
       ),

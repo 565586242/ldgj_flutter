@@ -53,7 +53,7 @@ class _MyCardPageState extends State<MyCardPage> {
               borderRadius: BorderRadius.circular(5.0),
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage("lib/assets/img_yinhangkabg@2x.png")
+                image: AssetImage("assets/img_yinhangkabg@2x.png")
               )
             ),
             child: Row(

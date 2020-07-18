@@ -35,7 +35,7 @@ class _VerifiedPageState extends State<VerifiedPage> {
           child: Icon(Icons.arrow_back_ios),
           onTap: () {
             Navigator.pop(context);
-          },
+          }, 
         ),
         centerTitle: true,
         title: Text("实名认证"),
@@ -229,7 +229,7 @@ class _VerifiedPageState extends State<VerifiedPage> {
                                 Container(
                                   width: 30,
                                   height: 30,
-                                  child: Image.asset("lib/assets/img_shangchuan@2x.png",fit: BoxFit.cover,),
+                                  child: Image.asset("assets/img_shangchuan@2x.png",fit: BoxFit.cover,),
                                 ),
                                 Text("点击上传正面")
                               ],
@@ -240,7 +240,7 @@ class _VerifiedPageState extends State<VerifiedPage> {
                       Container(
                         width: 126,
                         height: 80,
-                        child: Image.asset("lib/assets/img_shilie_zheng@2x.png",fit: BoxFit.cover,),
+                        child: Image.asset("assets/img_shilie_zheng@2x.png",fit: BoxFit.cover,),
                       )
                     ],
                   )
@@ -281,7 +281,7 @@ class _VerifiedPageState extends State<VerifiedPage> {
                                 Container(
                                   width: 30,
                                   height: 30,
-                                  child: Image.asset("lib/assets/img_shangchuan@2x.png",fit: BoxFit.cover,),
+                                  child: Image.asset("assets/img_shangchuan@2x.png",fit: BoxFit.cover,),
                                 ),
                                 Text("点击上传反面")
                               ],
@@ -292,7 +292,7 @@ class _VerifiedPageState extends State<VerifiedPage> {
                       Container(
                         width: 126,
                         height: 80,
-                        child: Image.asset("lib/assets/img_shilie_fan@2x.png",fit: BoxFit.cover,),
+                        child: Image.asset("assets/img_shilie_fan@2x.png",fit: BoxFit.cover,),
                       )
                     ],
                   )

@@ -47,7 +47,7 @@ class _MyRewardPageState extends State<MyRewardPage> {
                     child: Container(
                       width: MediaQuery.of(context).size.width,
                       height: 200,
-                      child: Image.asset("lib/assets/img_my_xinxi@2x.png",fit: BoxFit.cover,),
+                      child: Image.asset("assets/img_my_xinxi@2x.png",fit: BoxFit.cover,),
                     ),
                   ),
                   Align(
@@ -108,7 +108,7 @@ class _MyRewardPageState extends State<MyRewardPage> {
                         borderRadius: BorderRadius.circular(5),
                         image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: AssetImage("lib/assets/img_jiangli@2x.png")
+                          image: AssetImage("assets/img_jiangli@2x.png")
                         )
                       ),
                       child: Row(

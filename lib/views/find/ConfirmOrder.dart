@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:new_ldgj/ajax/request.dart';
 import 'package:new_ldgj/components/AliPayPage.dart';
 import 'package:new_ldgj/components/ButtonNormal.dart';
 import 'package:new_ldgj/components/SeeImg.dart';
+import 'package:new_ldgj/components/Toast.dart';
 
 class ConfirmOrder extends StatefulWidget {
   final formInfo;
@@ -14,13 +16,13 @@ class ConfirmOrder extends StatefulWidget {
 
 class _ConfirmOrderState extends State<ConfirmOrder> {
 
-  var memaryImage;
+  var memaryImage1;
+  var memaryImage2;
+  var memaryImage3;
 
   @override
   void initState() { 
-    if(widget.formInfo["pay_voucher"] != null) {
-      _getImage();
-    }
+    _getImage();
     super.initState();
   }
 
@@ -44,6 +46,9 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
         case 3:
           return "数字钱包";
           break;
+        case 6:
+          return "第三方支付";
+          break;
         default:
           return "支付宝";
       }
@@ -52,9 +57,21 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
   }
 
   void _getImage() {
-    String str = widget.formInfo["pay_voucher"];
-    str = str.split(',')[1];
-    memaryImage = Base64Decoder().convert(str);
+    if(widget.formInfo["pay_voucher"] != null && widget.formInfo["pay_voucher"] != ""){
+      String str1 = widget.formInfo["pay_voucher"];
+      str1 = str1.split(',')[1];
+      memaryImage1 = Base64Decoder().convert(str1);
+    }
+    if(widget.formInfo["pay_voucher1"] != null && widget.formInfo["pay_voucher1"] != ""){
+      String str2 = widget.formInfo["pay_voucher1"];
+      str2 = str2.split(',')[1];
+      memaryImage2 = Base64Decoder().convert(str2);
+    }
+    if(widget.formInfo["pay_voucher2"] != null && widget.formInfo["pay_voucher2"] != ""){
+      String str3 = widget.formInfo["pay_voucher2"];
+      str3 = str3.split(',')[1];
+      memaryImage3 = Base64Decoder().convert(str3);
+    }
   }
 
   @override
@@ -94,29 +111,72 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
             Container():
             ListTile(
               leading: Text("上传凭证:"),
-              title: GestureDetector(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SeeImagePage(
-                    image: widget.formInfo["pay_voucher"],
-                    type: "base64"
-                  )));
-                },
-                child: Container(
-                  height: 300,
-                  decoration: BoxDecoration(
-                    border: Border.all()
+              title: Column(
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SeeImagePage(
+                        image: widget.formInfo["pay_voucher"],
+                        type: "base64"
+                      )));
+                    },
+                    child: Container(
+                      width: 200,
+                      height: 200,
+                      margin: EdgeInsets.only(bottom: 10),
+                      child: Image.memory(memaryImage1,fit: BoxFit.contain,),
+                    ),
                   ),
-                  child: Image.memory(memaryImage,fit: BoxFit.contain,),
-                ),
+                  widget.formInfo["pay_voucher1"] == ""?Container():GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SeeImagePage(
+                        image: widget.formInfo["pay_voucher1"],
+                        type: "base64"
+                      )));
+                    },
+                    child: Container(
+                      height: 200,
+                      width: 200,
+                      margin: EdgeInsets.only(bottom: 10),
+                      child: Image.memory(memaryImage2,fit: BoxFit.contain,),
+                    ),
+                  ),
+                  widget.formInfo["pay_voucher2"] == ""?Container():GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SeeImagePage(
+                        image: widget.formInfo["pay_voucher2"],
+                        type: "base64"
+                      )));
+                    },
+                    child: Container(
+                      height: 200,
+                      width: 200,
+                      margin: EdgeInsets.only(bottom: 10),
+                      child: Image.memory(memaryImage3,fit: BoxFit.contain,),
+                    ),
+                  )
+                ],
               )
             ),
           SizedBox(height: 20,),
           ButtonNormal(
             name: "确认提交",
             onTap: () {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainKeyboard(formInfo: widget.formInfo)));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainKeyboard(
+                formInfo: widget.formInfo,
+                calback: (data) async {
+                  var res = await AjaxUtil().postHttp(context, '/submitorder',data: data);
+                  if(res["code"] == 200){
+                    Toast.toast(context,msg:res["msg"]);
+                    Navigator.popUntil(context, (route) => route.isFirst);
+                  }else{
+                    Toast.toast(context,msg:res["msg"]);
+                  }
+                },
+              )));
             },
-          )
+          ),
+          SizedBox(height: 60)
         ],
       ),
     );

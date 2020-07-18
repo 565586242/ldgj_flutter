@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="丽东国际"
+        android:label="汉威资本"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true">
         <activity

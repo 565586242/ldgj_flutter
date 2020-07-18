@@ -79,7 +79,7 @@ class _ServicePageState extends State<ServicePage> {
                             child: Container(
                               width: 48,
                               height: 48,
-                              child: Image.asset("lib/assets/icon_zanting@2x.png"),
+                              child: Image.asset("assets/icon_zanting@2x.png"),
                             ),
                           )
                         ],
@@ -116,7 +116,7 @@ class _ServicePageState extends State<ServicePage> {
                           children: <Widget>[
                             Expanded(child: Text("查看详情")),
                             Image.asset(
-                              "lib/assets/icon_xiayiye03@2x.png",
+                              "assets/icon_xiayiye03@2x.png",
                               width: 10,
                             )
                           ],

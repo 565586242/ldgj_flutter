@@ -36,7 +36,7 @@ class _SharePageState extends State<SharePage> {
     return Container(
       color: Colors.redAccent,
       child: Image.asset(
-        "lib/assets/img_fenxiang@2x.png",
+        "assets/img_fenxiang@2x.png",
         width: 375,
         height: 460,
         fit: BoxFit.cover,
@@ -60,7 +60,7 @@ class _SharePageState extends State<SharePage> {
                   child: Row(
                     children: <Widget>[
                       Text(
-                        "丽东国际敬请关注",
+                        "汉威资本敬请关注",
                         style: TextStyle(
                           fontSize: 20,
                           color: Color.fromRGBO(40, 40, 40, 1),
@@ -69,7 +69,7 @@ class _SharePageState extends State<SharePage> {
                       ),
                       SizedBox(width: 6,),
                       Image.asset(
-                        "lib/assets/img_fenxiang_shouzhi@2x.png",
+                        "assets/img_fenxiang_shouzhi@2x.png",
                         width: 43.5,
                         height: 22,
                         fit: BoxFit.cover,

@@ -60,7 +60,9 @@ class _DigitalAsetsPageState extends State<DigitalAsetsPage> {
                 padding: EdgeInsets.all(0),
                 child: Text(item["add_time"]??"",textAlign: TextAlign.center,style: TextStyle(inherit: false,color: Colors.grey[500]),),
               ),
-              Expanded(child: Text(item["type"] == 4?"数字资产":"",textAlign: TextAlign.center,style: TextStyle(inherit: false,color: Colors.grey[500]))),
+              Expanded(child: Text(
+                item["where_id_info"] == "0"?(item["type"] == 4?"数字资产":""):item["where_id_info"],
+                textAlign: TextAlign.center,style: TextStyle(inherit: false,color: Colors.grey[500]))),
               Expanded(child: Text(item["amount"] == null?"0":"${item["amount"]}",textAlign: TextAlign.center,style: TextStyle(inherit: false,color: Colors.grey[500]))),
               Expanded(child: Text(item["log_note"]??"",textAlign: TextAlign.center,style: TextStyle(inherit: false,color: Colors.grey[500]))),
             ],
@@ -115,7 +117,7 @@ class _DigitalAsetsPageState extends State<DigitalAsetsPage> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage("lib/assets/img_my_xinxi@2x.png")
+                        image: AssetImage("assets/img_my_xinxi@2x.png")
                       )
                     ),
                   ),

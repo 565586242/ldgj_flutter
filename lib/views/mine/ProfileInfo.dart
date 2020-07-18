@@ -123,7 +123,7 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                     (
                       userInfo["user_head"] != null && userInfo["user_head"] != ""?
                       NetworkImage(CommonModel().hostUrl + userInfo["user_head"]):
-                      AssetImage("lib/assets/img_touxiang@2x.png")
+                      AssetImage("assets/img_touxiang@2x.png")
                     )
                 ),
               ),
@@ -240,7 +240,7 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                           (
                             userInfo["wechat_code"] != null?
                             NetworkImage(CommonModel().hostUrl + userInfo["wechat_code"]):
-                            AssetImage("lib/assets/img_shangchuan@2x.png")
+                            AssetImage("assets/img_shangchuan@2x.png")
                           )
                       ),
                     ),

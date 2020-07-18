@@ -9,8 +9,8 @@ import 'package:new_ldgj/views/Message.dart';
 import 'package:new_ldgj/views/Service.dart';
 import 'package:new_ldgj/views/Share.dart';
 import 'package:new_ldgj/views/Synopsis.dart';
-import 'package:new_ldgj/views/Welfare.dart';
 import 'package:new_ldgj/views/find/NewDynamicDetail.dart';
+import 'package:new_ldgj/views/home/Equity.dart';
 import 'package:new_ldgj/views/home/Help.dart';
 import 'package:marquee_flutter/marquee_flutter.dart';
 
@@ -33,7 +33,6 @@ class _HomePageState extends State<HomePage> {
 
   homeindex() async {
     var res = await AjaxUtil().getHttp(context, '/homeindex');
-    print(res);
     if(res["code"] == 200){
       setState(() {
         bannerList = res["data"]["banner_list"];
@@ -51,7 +50,7 @@ class _HomePageState extends State<HomePage> {
       child: Row(
         children: <Widget>[
           Image.asset(
-            "lib/assets/home_logo@2x.png",
+            "assets/home_logo@2x.png",
             width: 28,
           ),
           SizedBox(width: 15),
@@ -74,13 +73,13 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
                   child: Image.asset(
-                    "lib/assets/home_sousuo_fenge@2x.png",
+                    "assets/home_sousuo_fenge@2x.png",
                     width: 1.0,
                     height: 18.0,
                   ),
                 ),
                 Image.asset(
-                  "lib/assets/home_sousuo@2x.png",
+                  "assets/home_sousuo@2x.png",
                   width: 18.5,
                 )
               ],
@@ -118,42 +117,42 @@ class _HomePageState extends State<HomePage> {
     /* 九宫格 */
     var gridList = [
       {
-        "imgUrl": "lib/assets/home_icon_gonggao@2x.png",
+        "imgUrl": "assets/home_icon_gonggao@2x.png",
         "title": "公 告",
         "routerUrl": MesagePage()
       },
       {
-        "imgUrl": "lib/assets/home_icon_jiejian@2x.png",
+        "imgUrl": "assets/home_icon_jiejian@2x.png",
         "title": "简 介",
         "routerUrl": SynopsisPage()
       },
       {
-        "imgUrl": "lib/assets/home_icon_kuaixun@2x.png",
+        "imgUrl": "assets/home_icon_kuaixun@2x.png",
         "title": "快 讯",
         "routerUrl": BulletinPage()
       },
       {
-        "imgUrl": "lib/assets/home_icon_fuli@2x.png",
-        "title": "福 利",
-        "routerUrl": WelfarePage()
+        "imgUrl": "assets/home_icon_fuli@2x.png",
+        "title": "股 权",
+        "routerUrl": EquityPage()
       },
       {
-        "imgUrl": "lib/assets/home_icon_fuwu@2x.png",
+        "imgUrl": "assets/home_icon_fuwu@2x.png",
         "title": "文 化",
         "routerUrl": ServicePage()
       },
       {
-        "imgUrl": "lib/assets/home_icon_hezuo@2x.png",
+        "imgUrl": "assets/home_icon_hezuo@2x.png",
         "title": "合 作",
         "routerUrl": CooperationPage()
       },
       {
-        "imgUrl": "lib/assets/home_icon_fenxiang@2x.png",
+        "imgUrl": "assets/home_icon_fenxiang@2x.png",
         "title": "分 享",
         "routerUrl": SharePage()
       },
       {
-        "imgUrl": "lib/assets/home_icon_bangzhu@2x.png",
+        "imgUrl": "assets/home_icon_bangzhu@2x.png",
         "title": "帮 助",
         "routerUrl": HelpPage()
       }
@@ -205,7 +204,7 @@ class _HomePageState extends State<HomePage> {
         child: Row(
           children: <Widget>[
             Image.asset(
-              "lib/assets/home_icon_xiaoxi@2x.png",
+              "assets/home_icon_xiaoxi@2x.png",
               width: 38,
             ),
             SizedBox(
@@ -263,7 +262,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   SizedBox(width: 5),
                   Image.asset(
-                    "lib/assets/icon_xiayiye03@2x.png",
+                    "assets/icon_xiayiye03@2x.png",
                     width: 5.8,
                     height: 9.8,
                   )

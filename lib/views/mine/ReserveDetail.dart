@@ -106,12 +106,16 @@ class _ReserveDetailPageState extends State<ReserveDetailPage> {
     List<Widget> list = [];
     String type;
     for (var item in fortuneLog) {
-      if(item["type"] == 3) {
-        type = "冻结";
-      }else if(item["type"] == 5 || item["type"] == 6 ){
-        type = "转账";
-      }else if(item["type"] == 2) {
-        type = "完成";
+      if(item["where_id_info"] == "0") {
+        if(item["type"] == 3) {
+          type = "冻结";
+        }else if(item["type"] == 5 || item["type"] == 6 ){
+          type = "转账";
+        }else if(item["type"] == 2) {
+          type = "完成";
+        }
+      }else{
+        type = item["where_id_info"];
       }
       if(currentIndex == 0) {
         list.add(
@@ -225,7 +229,7 @@ class _ReserveDetailPageState extends State<ReserveDetailPage> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage("lib/assets/img_my_xinxi@2x.png")
+                        image: AssetImage("assets/img_my_xinxi@2x.png")
                       )
                     ),
                   ),
@@ -346,7 +350,7 @@ class _ReserveDetailPageState extends State<ReserveDetailPage> {
                             width: 13,
                             height: 13,
                             margin: EdgeInsets.only(right: 3),
-                            child: Image.asset("lib/assets/icon_zhuanzhang@2x.png",fit: BoxFit.cover,),
+                            child: Image.asset("assets/icon_zhuanzhang@2x.png",fit: BoxFit.cover,),
                           ),
                           Text(
                             "立即转账",

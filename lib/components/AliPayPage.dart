@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:new_ldgj/ajax/request.dart';
 import 'package:new_ldgj/components/CustomJPassword.dart';
 import 'package:new_ldgj/components/MyKeyboard.dart';
-import 'package:new_ldgj/components/Toast.dart';
 
 /// 支付密码  +  自定义键盘
 class MainKeyboard extends StatefulWidget {
 
   final Map formInfo;
+  final calback;
 
-  MainKeyboard({Key key,this.formInfo}) : super(key: key);
+  MainKeyboard({Key key,this.formInfo, this.calback}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => MainKeyboardState();
@@ -48,7 +47,7 @@ class MainKeyboardState extends State<MainKeyboard> {
           new Padding(
             padding: const EdgeInsets.only(top: 50.0),
             child: new Text(
-              '请在此输入新支付密码',
+              '请在此输入支付密码',
               style: new TextStyle(fontSize: 18.0, color: Color(0xff333333)),
             ),
           ),
@@ -61,21 +60,11 @@ class MainKeyboardState extends State<MainKeyboard> {
       ),
     );
   }
-
-  submitorder() async {
-    widget.formInfo["pay_password"] = pwdData;
-    var res = await AjaxUtil().postHttp(context, '/submitorder',data: widget.formInfo);
-    if(res["code"] == 200){
-      Toast.toast(context,msg:res["msg"]);
-      Navigator.popUntil(context, (route) => route.isFirst);
-    }else{
-      Toast.toast(context,msg:res["msg"]);
-    }
-  }
-
+  
   /// 密码键盘 确认按钮 事件
   void onAffirmButton() async {
-    submitorder();
+    widget.formInfo["pay_password"] = pwdData;
+    widget.calback(widget.formInfo);
   }
 
   void _onKeyDown(KeyEvent data) {
@@ -89,7 +78,7 @@ class MainKeyboardState extends State<MainKeyboard> {
         pwdData += data.key;
       }else{
         pwdData += data.key;
-        submitorder();
+        onAffirmButton();
       }
       setState(() {});
     }

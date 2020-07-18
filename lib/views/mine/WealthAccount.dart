@@ -103,13 +103,18 @@ class _WealthAccountPageState extends State<WealthAccountPage> {
     List<Widget> list = [];
     String type;
     for (var item in fortuneLog) {
-      if(item["type"] == 1 || item["type"] == 8) {
-        type = "收益";
-      }else if(item["type"] == 9 || item["type"] == 10 ){
-        type = "提现";
-      }else if( item["type"] == 7){
-        type = "转账消耗";
+      if(item["where_id_info"] == "0") {
+        if(item["type"] == 1 || item["type"] == 8) {
+          type = "收益";
+        }else if(item["type"] == 9 || item["type"] == 10 ){
+          type = "提现";
+        }else if( item["type"] == 7){
+          type = "转账消耗";
+        }
+      }else{
+        type = item["where_id_info"];
       }
+      
       if(currentIndex == 0){
         list.add(
           Container(
@@ -222,7 +227,7 @@ class _WealthAccountPageState extends State<WealthAccountPage> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage("lib/assets/img_my_xinxi@2x.png")
+                        image: AssetImage("assets/img_my_xinxi@2x.png")
                       )
                     ),
                   ),
@@ -338,7 +343,7 @@ class _WealthAccountPageState extends State<WealthAccountPage> {
                             width: 13,
                             height: 13,
                             margin: EdgeInsets.only(right: 3),
-                            child: Image.asset("lib/assets/icon_tixian@2x.png",fit: BoxFit.cover,),
+                            child: Image.asset("assets/icon_tixian@2x.png",fit: BoxFit.cover,),
                           ),
                           Text(
                             "立即提现",

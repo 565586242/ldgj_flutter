@@ -121,7 +121,7 @@ class _ShopViewState extends State<ShopView> {
                         topRight: Radius.circular(20)
                       )
                     ),
-                    child: Image.asset("lib/assets/img_02@2x.png",fit: BoxFit.cover,),
+                    child: Image.asset("assets/img_02@2x.png",fit: BoxFit.cover,),
                   ),
                   Text(
                     "碧色Bedtder18K金铂金情 侣求婚结婚钻石戒指克拉",
@@ -158,7 +158,7 @@ class _ShopViewState extends State<ShopView> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20))
                     ),
-                    child: Image.asset("lib/assets/img_02@2x.png",fit: BoxFit.cover,),
+                    child: Image.asset("assets/img_02@2x.png",fit: BoxFit.cover,),
                   ),
                   Text(
                     "碧色Bedtder18K金铂金情 侣求婚结婚钻石戒指克拉",
@@ -195,7 +195,7 @@ class _ShopViewState extends State<ShopView> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20))
                     ),
-                    child: Image.asset("lib/assets/img_02@2x.png",fit: BoxFit.cover,),
+                    child: Image.asset("assets/img_02@2x.png",fit: BoxFit.cover,),
                   ),
                   Text(
                     "碧色Bedtder18K金铂金情 侣求婚结婚钻石戒指克拉",
@@ -277,9 +277,9 @@ class _LifeViewState extends State<LifeView> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              _createItem("话费充值","lib/assets/icon_huafei@2x.png"),
-              _createItem("缴水费","lib/assets/icon_shuifei@2x.png"),
-              _createItem("缴电费","lib/assets/icon_dianfei@2x.png"),
+              _createItem("话费充值","assets/icon_huafei@2x.png"),
+              _createItem("缴水费","assets/icon_shuifei@2x.png"),
+              _createItem("缴电费","assets/icon_dianfei@2x.png"),
               Expanded(
                 child: Column(),
               ),
@@ -292,9 +292,9 @@ class _LifeViewState extends State<LifeView> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              _createItem("滴滴出行","lib/assets/icon_didi@2x.png"),
-              _createItem("火车票","lib/assets/icon_huoche@2x.png"),
-              _createItem("飞机票","lib/assets/icon_feiji@2x.png"),
+              _createItem("滴滴出行","assets/icon_didi@2x.png"),
+              _createItem("火车票","assets/icon_huoche@2x.png"),
+              _createItem("飞机票","assets/icon_feiji@2x.png"),
               Expanded(
                 child: Column(),
               ),
@@ -310,7 +310,7 @@ class _LifeViewState extends State<LifeView> {
               borderRadius: BorderRadius.circular(0)
             ),
             child: Image.asset(
-              "lib/assets/img_001@2x.png",
+              "assets/img_001@2x.png",
             )
           ),
         )

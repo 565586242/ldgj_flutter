@@ -61,7 +61,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     CommonModel().hostUrl + userInfo["user_head"]
                   ):
                   AssetImage(
-                    "lib/assets/img_touxiang@2x.png"
+                    "assets/img_touxiang@2x.png"
                   )
               ),
             ),
